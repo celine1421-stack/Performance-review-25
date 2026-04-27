@@ -19,10 +19,21 @@
             font-size: 1.2rem; 
         }
 
+        /* BRAND COLOR PALETTE BASED ON UPLOADED FILES */
+        :root {
+            --krf-primary-blue: #00AEEF;
+            --krf-primary-navy: #101830;
+            --krf-ocean-blue: #114777;
+            --krf-gray: #C2C4C6;
+            --krf-light-gray: #F8F8F8;
+            /* Gradient defined by the user's image */
+            --krf-blue-gradient: linear-gradient(90deg, #00AEEF 0%, #101830 100%);
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
-            background-color: #f8fafc;
+            background-color: var(--krf-light-gray);
             color: #1e293b;
         }
 
@@ -35,7 +46,7 @@
         }
 
         .section-accent {
-            border-left: 6px solid #0284c7;
+            border-left: 6px solid var(--krf-primary-blue);
             padding-left: 1.5rem;
         }
 
@@ -44,9 +55,9 @@
             width: 100%;
             border-radius: 0.75rem;
             overflow: hidden;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            background-color: #f1f5f9;
+            border: 1px solid var(--krf-gray);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            background-color: white;
         }
         .content-image-wrapper img {
             width: 100%;
@@ -55,44 +66,32 @@
             display: block;
         }
 
-        /* Tỷ lệ 16:9 cho ảnh phần Achievement */
-        .achievement-img-container {
-            aspect-ratio: 16 / 9;
-        }
-
-        .metric-box-dark {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Achievements Left-Right Boxes */
+        .achievement-text-box {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+            border-left: 6px solid var(--krf-primary-blue);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             transition: all 0.3s ease;
         }
-
-        .metric-box-dark:hover {
-            background: rgba(2, 132, 199, 0.1);
-            border-color: rgba(2, 132, 199, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .proposal-card {
-            background: white;
-            border-radius: 2rem;
-            padding: 2.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-            border: 1px solid #f1f5f9;
-            height: 100%;
-        }
-
-        p, li, td {
-            line-height: 1.7;
+        .achievement-text-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
         /* Giao diện Dark cho phần Key Responsibilities */
         .responsibilities-container-dark {
-            background-color: #0f172a;
+            background-color: var(--krf-primary-navy);
             color: #f1f5f9;
             font-size: 0.85em; 
             border-radius: 2.5rem;
             padding: 3rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
         }
 
         .resp-row-dark {
@@ -113,11 +112,12 @@
             flex-shrink: 0;
             width: 45px;
             text-align: center;
+            color: var(--krf-primary-blue);
         }
 
         .achievement-tag {
-            background: #e0f2fe;
-            color: #0369a1;
+            background: rgba(0, 174, 239, 0.1);
+            color: var(--krf-primary-blue);
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
             font-size: 0.75rem;
@@ -127,21 +127,40 @@
             margin-bottom: 0.5rem;
         }
 
-        .achievements-table-header {
-            background-color: #0f172a !important;
-            color: #ffffff !important;
+        /* Tag variant cho nền tối */
+        .achievement-tag-light {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .proposal-theme-dark {
-            background-color: #0f172a !important; 
-            color: #ffffff !important;
-            border: none !important;
+        .metric-box-dark {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .metric-box-dark:hover {
+            background: rgba(0, 174, 239, 0.1);
+            border-color: var(--krf-primary-blue);
         }
 
         .box-karofi-accent {
-            background-color: rgba(2, 132, 199, 0.15); 
-            border: 2px solid #0284c7; 
+            background-color: rgba(0, 174, 239, 0.08); 
+            border: 2px solid var(--krf-primary-blue); 
             border-radius: 1.5rem;
+        }
+
+        /* Specific gradient background class */
+        .krf-bg-gradient-section {
+            background: var(--krf-blue-gradient);
         }
     </style>
 </head>
@@ -152,17 +171,17 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-sky-600 rounded-xl flex items-center justify-center text-white font-extrabold shadow-lg text-2xl">N</div>
+                    <div class="w-12 h-12 bg-[#00AEEF] rounded-xl flex items-center justify-center text-white font-extrabold shadow-lg text-2xl">N</div>
                     <div>
-                        <p class="font-bold text-slate-900 leading-none text-lg">PHI HA NHI</p>
+                        <p class="font-bold text-[#101830] leading-none text-lg">PHI HA NHI</p>
                         <p class="text-xs text-slate-500 font-bold uppercase tracking-widest mt-1">Content Executive</p>
                     </div>
                 </div>
                 <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-widest">
-                    <a href="#summary" class="text-slate-500 hover:text-sky-600 transition-colors">Role</a>
-                    <a href="#achievements" class="text-slate-500 hover:text-sky-600 transition-colors">Achievements</a>
-                    <a href="#ces" class="text-slate-500 hover:text-sky-600 transition-colors">CES 2026</a>
-                    <a href="#evaluation" class="text-slate-500 hover:text-sky-600 transition-colors">Evaluation</a>
+                    <a href="#summary" class="text-slate-500 hover:text-[#00AEEF] transition-colors">Role</a>
+                    <a href="#achievements" class="text-slate-500 hover:text-[#00AEEF] transition-colors">Achievements</a>
+                    <a href="#ces" class="text-slate-500 hover:text-[#00AEEF] transition-colors">CES 2026</a>
+                    <a href="#evaluation" class="text-slate-500 hover:text-[#00AEEF] transition-colors">Evaluation</a>
                 </div>
             </div>
         </div>
@@ -172,19 +191,19 @@
     <header id="summary" class="bg-white pt-20 pb-28 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-left mb-16">
-                <h2 class="text-sky-600 font-bold uppercase tracking-widest text-sm mb-6">Annual Performance Review 2025 - 2026</h2>
+                <h2 class="text-[#00AEEF] font-bold uppercase tracking-widest text-sm mb-6">Annual Performance Review 2025 - 2026</h2>
                 <div class="space-y-2">
                     <p class="text-2xl md:text-3xl text-slate-500 font-semibold leading-none">Beyond Content execution,</p>
-                    <!-- Giảm size khoảng 10%: text-4xl -> text-[2.1rem], text-6xl -> text-[3.4rem] -->
-                    <h1 class="text-[2.1rem] md:text-[3.4rem] font-extrabold text-slate-900 leading-tight">
-                        It's about <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-emerald-500 italic">Brand building and story-telling</span>
+                    <h1 class="text-[2.1rem] md:text-[3.4rem] font-extrabold leading-tight italic">
+                        <span class="text-slate-500">It's about </span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-[#101830]">Brand building and story-telling</span>
                     </h1>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 gap-12 items-start">
                 <div class="w-full responsibilities-container-dark">
-                    <h3 class="text-2xl md:text-3xl font-black text-sky-400 uppercase tracking-widest mb-10 border-b border-white/10 pb-6 text-left">Key Responsibilities</h3>
+                    <h3 class="text-2xl md:text-3xl font-black text-[#00AEEF] uppercase tracking-widest mb-10 border-b border-white/10 pb-6 text-left">Key Responsibilities</h3>
                     
                     <div class="space-y-2">
                         <div class="resp-row-dark">
@@ -214,11 +233,11 @@
                                 <p class="font-bold text-white text-xl leading-tight">Campaign Material Development</p>
                                 <ul class="text-slate-400 mt-2 space-y-1 list-none">
                                     <li class="flex items-start">
-                                        <span class="text-sky-500 mr-2 font-bold">+</span>
+                                        <span class="text-[#00AEEF] mr-2 font-bold">+</span>
                                         Developing communication main theme/concept for key campaign (CES 2026).
                                     </li>
                                     <li class="flex items-start">
-                                        <span class="text-sky-500 mr-2 font-bold">+</span>
+                                        <span class="text-[#00AEEF] mr-2 font-bold">+</span>
                                         Creating marketing collateral for global campaigns/activities. Producing content across channels (POSM, social media, websites, etc).
                                     </li>
                                 </ul>
@@ -230,62 +249,109 @@
         </div>
     </header>
 
-    <!-- 2. Key Achievements -->
-    <section id="achievements" class="py-24 bg-slate-50">
+    <!-- 2. Key Achievements (GRADIENT BACKGROUND APPLIED HERE) -->
+    <section id="achievements" class="py-24 krf-bg-gradient-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 text-center max-w-3xl mx-auto">
-                <h2 class="text-4xl font-extrabold text-slate-900 mb-6 text-sky-600 uppercase tracking-wide">Key Achievements</h2>
-                <p class="text-slate-600 text-xl font-medium italic">Establishing global consistency and operational excellence through standardized frameworks.</p>
+            <div class="mb-20 text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl font-extrabold text-white mb-6 uppercase tracking-wide">Key Achievements</h2>
+                <p class="text-white/80 text-xl font-medium italic">Establishing global consistency through standardized frameworks and high-impact projects.</p>
             </div>
 
-            <div class="overflow-hidden bg-white shadow-xl border border-slate-200 rounded-[2.5rem] mb-12">
-                <table class="min-w-full divide-y divide-slate-200 text-base">
-                    <thead>
-                        <tr>
-                            <th class="achievements-table-header px-8 py-6 text-left text-xs font-bold uppercase tracking-widest">Area</th>
-                            <th class="achievements-table-header px-8 py-6 text-left text-xs font-bold uppercase tracking-widest">Key Accomplishment</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100">
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-8 py-8 font-bold text-slate-900">Global Website Building</td>
-                            <td class="px-8 py-8 text-slate-600">Developed templates and localized for 4 markets (Thailand, USA, Indonesia, Philippines), ensuring brand consistency.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-8 py-8 font-bold text-slate-900">CES Material Ownership</td>
-                            <td class="px-8 py-8 text-slate-600">Took ownership of end-to-end content development for CES 2026 campaign, managing from concept to deliverables.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-8 py-8 font-bold text-slate-900">Standardization</td>
-                            <td class="px-8 py-8 text-slate-600">Built standardized asset lists and visual ecommerce formulas, enabling seamless internal knowledge transfer.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-8 py-8 font-bold text-slate-900">Mentorship</td>
-                            <td class="px-8 py-8 text-slate-600">Mentored Content Intern for 6 months, ensuring mastery of brand identity and successful asset production.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Achievement Images: 16:9 Ratio -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div class="content-image-wrapper achievement-img-container">
-                    <img src="https://lh3.googleusercontent.com/d/1bz_UBjT_nUk1wEg-MU56y1VHK2MJOpsE" alt="Global Content Framework">
+            <div class="space-y-12">
+                <!-- Item 1: Web -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <div>
+                        <div class="achievement-text-box">
+                            <span class="achievement-tag">Web & Localization</span>
+                            <h4 class="text-2xl font-bold text-[#101830] mb-4">Global Website Building</h4>
+                            <p class="text-slate-600 leading-relaxed">Developed templates and localized for 4 markets, ensuring brand consistency while meeting local requirements.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="content-image-wrapper aspect-video h-full">
+                            <img src="https://lh3.googleusercontent.com/d/1bz_UBjT_nUk1wEg-MU56y1VHK2MJOpsE" alt="Global Website Templates">
+                        </div>
+                    </div>
                 </div>
-                <div class="content-image-wrapper achievement-img-container">
-                    <img src="https://lh3.googleusercontent.com/d/1n4ZclEDwnxEErmgdYXejsAvDRHUacAef" alt="Digital Asset Standardization">
+
+                <!-- Item 2: CES -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <div>
+                        <div class="achievement-text-box">
+                            <span class="achievement-tag">Campaign Execution</span>
+                            <h4 class="text-2xl font-bold text-[#101830] mb-4">CES Material Ownership</h4>
+                            <p class="text-slate-600 leading-relaxed">Took ownership of end-to-end content development, from creative concept to final deliverables for Las Vegas.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="content-image-wrapper aspect-video h-full">
+                            <img src="https://lh3.googleusercontent.com/d/1DPuKqyZzripqxFiFoT1gYf1xObX6Zy-N" alt="CES Campaign Materials">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Framework -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <div>
+                        <div class="achievement-text-box">
+                            <span class="achievement-tag">Process Excellence</span>
+                            <h4 class="text-2xl font-bold text-[#101830] mb-4">Standardization Framework</h4>
+                            <p class="text-slate-600 leading-relaxed">Built standardized asset lists and formulas, enabling scalable production and seamless knowledge transfer.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="content-image-wrapper aspect-video h-full">
+                            <img src="https://lh3.googleusercontent.com/d/17rq52oSiV1K67b_WEnXJ_Sw3GWfZWQpo" alt="Standardization Guides">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Mentorship -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <div>
+                        <div class="achievement-text-box">
+                            <span class="achievement-tag">Leadership & Team</span>
+                            <h4 class="text-2xl font-bold text-[#101830] mb-4">Mentorship</h4>
+                            <p class="text-slate-600 leading-relaxed">Managed and mentored Content Intern for 6 months, ensuring thorough understanding about brand, product and content marketing tasks</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="content-image-wrapper aspect-video h-full">
+                            <img src="https://lh3.googleusercontent.com/d/18qrMKIWMtH2zlKe1CGxBU-TdJZzYtrBp" alt="Mentorship & Growth">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Visuals - Indo Mall Banners -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <div>
+                        <div class="content-image-wrapper aspect-video h-full">
+                            <img src="https://lh3.googleusercontent.com/d/1psUBnSR6Ftef84A9PHEeXCSgI6Ze2w6r" alt="Indo Mall Banner 1">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="content-image-wrapper aspect-video h-full">
+                            <img src="https://lh3.googleusercontent.com/d/1lBvPJ6fCn5YqHkkDxAnp_0RRdGBPfIrj" alt="Indo Mall Banner 2">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 3. Featured Project: CES 2026 -->
-    <section id="ces" class="bg-white border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <section id="ces" class="bg-white border-b border-slate-100 py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- CES COVER IMAGE (Updated: Fit to new image ratio) -->
+            <div class="content-image-wrapper mb-16 shadow-2xl">
+                <img src="https://lh3.googleusercontent.com/d/1RiW-oC9WuOuzmKT5QJwuE6Y3djQvmCBL" alt="Karofi At CES 2026 Key Visual Cover" class="w-full h-auto">
+            </div>
+
             <div class="lg:flex gap-20 items-start">
                 <div class="lg:w-1/2">
                     <div class="section-accent mb-10">
-                        <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Featured Project: <br><span class="text-sky-600 uppercase">Karofi At CES 2026 - Lasvegas</span></h2>
+                        <h2 class="text-4xl font-extrabold text-[#101830] mb-4">Featured Project: <br><span class="bg-clip-text text-transparent bg-gradient-to-r from-[#00AEEF] to-[#101830] uppercase">Karofi At CES 2026 - Lasvegas</span></h2>
                         <p class="text-slate-600 font-bold uppercase tracking-widest text-xs italic">"Smart home innovations for wellness living"</p>
                     </div>
 
@@ -298,48 +364,49 @@
                         <div>
                             <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 text-left">Key Deliverables</h4>
                             <div class="space-y-6">
-                                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                                    <span class="achievement-tag">Main Theme</span>
-                                    <p class="text-slate-700 text-base font-bold">"Smart home innovations for wellness living"</p>
-                                    <p class="text-slate-600 text-sm mt-1">Communicated consistently throughout online assets and booth visuals.</p>
+                                <div class="krf-bg-gradient-section p-6 rounded-2xl border border-white/10 shadow-lg">
+                                    <span class="achievement-tag-light">Main Theme</span>
+                                    <p class="text-white text-base font-bold">"Smart home innovations for wellness living"</p>
+                                    <p class="text-white/80 text-sm mt-1">Communicated consistently throughout online assets and booth visuals.</p>
                                 </div>
-                                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                                    <span class="achievement-tag">Digital Hub</span>
-                                    <p class="text-slate-700 text-base font-bold">Global Website & CES Landing Pages</p>
-                                    <p class="text-slate-600 text-sm mt-1">Designed to showcase brand credibility and capture international leads.</p>
+                                <div class="krf-bg-gradient-section p-6 rounded-2xl border border-white/10 shadow-lg">
+                                    <span class="achievement-tag-light">Digital Hub</span>
+                                    <p class="text-white text-base font-bold">Global Website & CES Landing Pages</p>
+                                    <p class="text-white/80 text-sm mt-1">Designed to showcase brand credibility and capture leads.</p>
                                 </div>
-                                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                                    <span class="achievement-tag">Visual Assets</span>
-                                    <p class="text-slate-700 text-base font-bold">Series of Brand & Capability Videos</p>
-                                    <p class="text-slate-600 text-sm mt-1">High-impact assets emphasized Karofi's R&D centers.</p>
+                                <div class="krf-bg-gradient-section p-6 rounded-2xl border border-white/10 shadow-lg">
+                                    <span class="achievement-tag-light">Visual Assets</span>
+                                    <p class="text-white text-base font-bold">Series of Brand & Capability Videos</p>
+                                    <p class="text-white/80 text-sm mt-1">High-impact assets emphasized Karofi's R&D & manufacturing capabilities.</p>
                                 </div>
-                                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                                    <span class="achievement-tag">Global PR</span>
-                                    <p class="text-slate-700 text-base font-bold">Comprehensive PR Materials</p>
-                                    <p class="text-slate-600 text-sm mt-1">Media kits used to amplify Karofi's innovations through PR channels.</p>
+                                <div class="krf-bg-gradient-section p-6 rounded-2xl border border-white/10 shadow-lg">
+                                    <span class="achievement-tag-light">Global PR</span>
+                                    <p class="text-white text-base font-bold">Comprehensive PR Materials</p>
+                                    <p class="text-white/80 text-sm mt-1">Media kits used to amplify Karofi's innovations through PR channels.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- RIGHT SIDE: CES Image Grid -->
+                <!-- RIGHT SIDE: CES Image Grid (Updated Ratios) -->
                 <div class="lg:w-1/2 mt-16 lg:mt-0 space-y-4 lg:sticky lg:top-24">
-                    <div class="content-image-wrapper h-64">
+                    <!-- Strategy Visual (16:9) -->
+                    <div class="content-image-wrapper aspect-video">
                         <img src="https://lh3.googleusercontent.com/d/1DPuKqyZzripqxFiFoT1gYf1xObX6Zy-N" alt="Karofi CES Strategy Visual">
-                    </div>
-                    <div class="content-image-wrapper h-64">
-                        <img src="https://lh3.googleusercontent.com/d/1csz4i0OBGqqVK-8srjYraXn2qatcklXM" alt="Campaign Key Visual">
                     </div>
                     
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-4">
-                            <div class="content-image-wrapper h-40">
+                            <!-- ID 12dPvZqxeQAkTVf8DbMQThI28iNpJoTgD - Aspect 16:9 -->
+                            <div class="content-image-wrapper aspect-video">
                                 <img src="https://lh3.googleusercontent.com/d/12dPvZqxeQAkTVf8DbMQThI28iNpJoTgD" alt="CES Booth Design">
                             </div>
+                            <!-- ID 1cxbUYLPg00Wa3NBFJxTxJn27Mswet0NO - Aspect 3:4 -->
                             <div class="content-image-wrapper aspect-[3/4]">
                                 <img src="https://lh3.googleusercontent.com/d/1cxbUYLPg00Wa3NBFJxTxJn27Mswet0NO" alt="Social Media Strategy">
                             </div>
+                            <!-- Remains 3:4 or other ratio as per previous layout -->
                             <div class="content-image-wrapper aspect-[3/4]">
                                 <img src="https://lh3.googleusercontent.com/d/14gzPrpSygrNytB4_ijapOdNtF2NBCoDb" alt="CES Additional Visual 2">
                             </div>
@@ -347,7 +414,7 @@
 
                         <div class="space-y-4">
                             <div class="content-image-wrapper h-40">
-                                <img src="https://lh3.googleusercontent.com/d/1lzv6zZ4nQx1yxEXxqXXE2bqISEOCcTDr" alt="Global Website Hub">
+                                <img src="https://lh3.googleusercontent.com/d/1csz4i0OBGqqVK-8srjYraXn2qatcklXM" alt="Global Website Hub">
                             </div>
                             <div class="content-image-wrapper h-40">
                                 <img src="https://lh3.googleusercontent.com/d/1RDtAI__sB5ffeWDz5-1SjRoggZIbFtUo" alt="CES Additional Visual 1">
@@ -360,176 +427,166 @@
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Performance Snapshot Section (Dark Blue) -->
-        <div class="bg-[#0f172a] text-white py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="mb-16 text-center">
-                    <h2 class="text-3xl font-extrabold mb-4 text-sky-400 uppercase tracking-widest">Performance Snapshot</h2>
-                    <p class="text-slate-400 text-lg italic">Quantitative proof of campaign success and strategic impact.</p>
+    <!-- Performance Snapshot Section (Dark Navy) -->
+    <div class="bg-[#101830] text-white py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl font-extrabold mb-4 text-[#00AEEF] uppercase tracking-widest">CES 2026 Performance Snapshot</h2>
+                <p class="text-slate-400 text-lg italic">Proof of campaign success and strategic impact.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+                <div class="metric-box-dark p-6 rounded-2xl text-center">
+                    <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">Impressions</p>
+                    <h4 class="text-3xl font-black text-white"><span id="stat-impressions">0</span><span class="text-[#00AEEF]">+</span></h4>
+                    <p class="text-[14px] text-[#00AEEF] font-bold mt-1">↑ 212.6%</p>
                 </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                    <div class="metric-box-dark p-6 rounded-2xl text-center">
-                        <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">Impressions</p>
-                        <h4 class="text-3xl font-black text-white"><span id="stat-impressions">0</span><span class="text-sky-600">+</span></h4>
-                        <p class="text-[14px] text-emerald-400 font-bold mt-1">↑ 212.6%</p>
-                    </div>
-                    <div class="metric-box-dark p-6 rounded-2xl text-center">
-                        <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">Reactions</p>
-                        <h4 class="text-3xl font-black text-white"><span id="stat-reactions">0</span></h4>
-                        <p class="text-[14px] text-emerald-400 font-bold mt-1">↑ 536.1%</p>
-                    </div>
-                    <div class="metric-box-dark p-6 rounded-2xl text-center">
-                        <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">Unique Visitors</p>
-                        <h4 class="text-3xl font-black text-white" id="stat-visitors">0</h4>
-                        <p class="text-[14px] text-emerald-400 font-bold mt-1">↑ 24.9%</p>
-                    </div>
-                    <div class="metric-box-dark p-6 rounded-2xl text-center">
-                        <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">New Followers</p>
-                        <h4 class="text-3xl font-black text-white" id="stat-followers">0</h4>
-                        <p class="text-[14px] text-slate-400 font-bold mt-1">LinkedIn</p>
-                    </div>
-                    <div class="metric-box-dark p-6 rounded-2xl text-center border-white/5">
-                        <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">Web Visitors</p>
-                        <h4 class="text-3xl font-black text-white"><span id="stat-web">0</span><span class="text-sky-600">+</span></h4>
-                        <p class="text-[14px] text-slate-400 font-bold mt-1">PR & Digital</p>
-                    </div>
-                    <div class="metric-box-dark p-6 rounded-2xl text-center border-white/5">
-                        <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">Media Mentions</p>
-                        <h4 class="text-3xl font-black text-white"><span id="stat-media">0</span><span class="text-sky-600">+</span></h4>
-                        <p class="text-[14px] text-slate-400 font-bold mt-1">Outlets</p>
-                    </div>
-                    <div class="metric-box-dark p-6 rounded-2xl text-center border-white/5">
-                        <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">B2B Leads</p>
-                        <h4 class="text-3xl font-black text-white" id="stat-leads">0</h4>
-                        <p class="text-[14px] text-slate-400 font-bold mt-1">Total</p>
-                    </div>
-                    <div class="metric-box-dark p-6 rounded-2xl text-center border-emerald-500/30 bg-emerald-950/20">
-                        <p class="text-[14px] font-bold text-white uppercase tracking-widest mb-2">Qualified Leads</p>
-                        <h4 class="text-3xl font-black text-white" id="stat-qual">0</h4>
-                    </div>
+                <div class="metric-box-dark p-6 rounded-2xl text-center">
+                    <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">Reactions</p>
+                    <h4 class="text-3xl font-black text-white"><span id="stat-reactions">0</span></h4>
+                    <p class="text-[14px] text-[#00AEEF] font-bold mt-1">↑ 536.1%</p>
                 </div>
+                <div class="metric-box-dark p-6 rounded-2xl text-center">
+                    <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">Unique Visitors</p>
+                    <h4 class="text-3xl font-black text-white" id="stat-visitors">0</h4>
+                    <p class="text-[14px] text-[#00AEEF] font-bold mt-1">↑ 24.9%</p>
+                </div>
+                <div class="metric-box-dark p-6 rounded-2xl text-center">
+                    <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">New Followers</p>
+                    <h4 class="text-3xl font-black text-white" id="stat-followers">0</h4>
+                    <p class="text-[14px] text-slate-300 font-bold mt-1">LinkedIn</p>
+                </div>
+                <div class="metric-box-dark p-6 rounded-2xl text-center border-white/5">
+                    <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">Web Visitors</p>
+                    <h4 class="text-3xl font-black text-white"><span id="stat-web">0</span><span class="text-[#00AEEF]">+</span></h4>
+                    <p class="text-[14px] text-slate-300 font-bold mt-1">PR & Digital</p>
+                </div>
+                <div class="metric-box-dark p-6 rounded-2xl text-center border-white/5">
+                    <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">Media Mentions</p>
+                    <h4 class="text-3xl font-black text-white"><span id="stat-media">0</span><span class="text-[#00AEEF]">+</span></h4>
+                    <p class="text-[14px] text-slate-300 font-bold mt-1">Outlets</p>
+                </div>
+                <div class="metric-box-dark p-6 rounded-2xl text-center border-white/5">
+                    <p class="text-[14px] font-bold text-slate-400 uppercase tracking-widest mb-2">B2B Leads</p>
+                    <h4 class="text-3xl font-black text-white" id="stat-leads">0</h4>
+                    <p class="text-[14px] text-slate-300 font-bold mt-1">Total</p>
+                </div>
+            </div>
 
-                <div class="bg-white/5 rounded-3xl p-10 border border-white/10 shadow-2xl">
-                    <h4 class="text-xl font-bold mb-10 text-sky-400 text-center">LinkedIn Growth Impact</h4>
-                    <div class="chart-container">
-                        <canvas id="growthChart"></canvas>
-                    </div>
+            <div class="bg-white/5 rounded-3xl p-10 border border-white/10 shadow-2xl">
+                <h4 class="text-xl font-bold mb-10 text-[#00AEEF] text-center">LinkedIn Growth Impact</h4>
+                <div class="chart-container">
+                    <canvas id="growthChart"></canvas>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- 4. Evaluation & Proposals -->
-    <section id="evaluation" class="py-24 bg-slate-50">
+    <section id="evaluation" class="py-24 bg-[#F8F8F8]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 text-center">
-                <h2 class="text-5xl font-extrabold text-slate-900 mb-4">Evaluation & Proposals</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto text-xl leading-relaxed font-medium text-center">Synthesizing professional growth and strategic vision for the next chapter at Karofi.</p>
+                <h2 class="text-5xl font-extrabold text-[#101830] mb-4 uppercase">Evaluation & Proposals</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto text-xl leading-relaxed font-medium text-center">Synthesizing professional growth and vision for the next chapter at Karofi.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-stretch">
                 <!-- Part 1: Capabilities Developed -->
-                <div class="proposal-card border-t-8 border-t-sky-600 flex flex-col text-sm">
+                <div class="proposal-card border-t-8 border-t-[#00AEEF] flex flex-col text-sm">
                     <div class="flex items-center space-x-3 mb-8">
                         <span class="text-3xl">💪</span>
-                        <h3 class="text-2xl font-bold text-slate-900 leading-tight">Capabilities Developed</h3>
+                        <h3 class="text-2xl font-bold text-[#101830] leading-tight">Capabilities Developed</h3>
                     </div>
                     <div class="space-y-8 flex-grow">
                         <div>
                             <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Professional Expertise</p>
                             <ul class="space-y-3 text-base text-slate-600 font-medium">
-                                <li class="flex items-center"><span class="w-2 h-2 bg-sky-500 rounded-full mr-3"></span>Project Management</li>
-                                <li class="flex items-center"><span class="w-2 h-2 bg-sky-500 rounded-full mr-3"></span>Strategic Content Planning</li>
-                                <li class="flex items-center"><span class="w-2 h-2 bg-sky-500 rounded-full mr-3"></span>Multi-market Communication</li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#00AEEF] rounded-full mr-3"></span>Project Management</li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#00AEEF] rounded-full mr-3"></span>Strategic Content Planning</li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#00AEEF] rounded-full mr-3"></span>Multi-market Communication</li>
                             </ul>
                         </div>
                         <div>
                             <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Execution & Leadership</p>
                             <ul class="space-y-3 text-base text-slate-600 font-medium">
-                                <li class="flex items-center"><span class="w-2 h-2 bg-emerald-500 rounded-full mr-3"></span>Mentorship</li>
-                                <li class="flex items-center"><span class="w-2 h-2 bg-emerald-500 rounded-full mr-3"></span>Project Management (material production)</li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#114777] rounded-full mr-3"></span>Mentorship</li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-[#114777] rounded-full mr-3"></span>Project Management (Production)</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <!-- Part 2: Next Year Goals -->
-                <div class="proposal-card border-t-8 border-t-emerald-600 flex flex-col text-sm">
+                <div class="proposal-card border-t-8 border-t-[#114777] flex flex-col text-sm">
                     <div class="flex items-center space-x-3 mb-8">
                         <span class="text-3xl">🚀</span>
-                        <h3 class="text-2xl font-bold text-slate-900 leading-tight">Next Year Goals</h3>
+                        <h3 class="text-2xl font-bold text-[#101830] leading-tight">Next Year Goals</h3>
                     </div>
                     <div class="space-y-8 flex-grow">
                         <div class="flex items-start">
-                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 font-bold shrink-0 mt-1 text-sm">01</div>
+                            <div class="w-10 h-10 bg-[#00AEEF]/10 rounded-lg flex items-center justify-center text-[#00AEEF] font-bold shrink-0 mt-1 text-sm">01</div>
                             <div class="ml-4">
+                                <p class="font-bold text-[#101830] text-lg leading-tight">Standardization</p>
                                 <p class="text-base text-slate-500 mt-1 leading-relaxed">Building content guidelines and a unified ecosystem across all markets.</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 font-bold shrink-0 mt-1 text-sm">02</div>
+                            <div class="w-10 h-10 bg-[#00AEEF]/10 rounded-lg flex items-center justify-center text-[#00AEEF] font-bold shrink-0 mt-1 text-sm">02</div>
                             <div class="ml-4">
-                                <p class="text-base text-slate-500 mt-1 leading-relaxed">Taking greater responsibility in brand communication planning and execution.</p>
+                                <p class="font-bold text-[#101830] text-lg leading-tight">Ownership</p>
+                                <p class="text-base text-slate-500 mt-1 leading-relaxed">Greater responsibility in brand communication planning and execution.</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 font-bold shrink-0 mt-1 text-sm">03</div>
+                            <div class="w-10 h-10 bg-[#00AEEF]/10 rounded-lg flex items-center justify-center text-[#00AEEF] font-bold shrink-0 mt-1 text-sm">03</div>
                             <div class="ml-4">
-                                <p class="text-base text-slate-500 mt-2 leading-relaxed">Transition capabilities toward a Brand Executive role.</p>
+                                <p class="font-bold text-[#101830] text-lg leading-tight">Leadership Scale</p>
+                                <p class="text-base text-slate-500 mt-2 leading-relaxed">Transition toward a Brand Executive role.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Part 3 -->
-                <div class="proposal-card proposal-theme-dark flex flex-col relative overflow-hidden shadow-2xl">
-                    <div class="relative z-10 flex flex-col h-full">
+                <!-- Part 3: Proposal (Dark Navy Theme) -->
+                <div class="proposal-theme-dark flex flex-col relative overflow-hidden shadow-2xl rounded-[2rem] bg-[#101830] p-8 border border-[#00AEEF]/20">
+                    <div class="relative z-10 flex flex-col h-full text-white">
                         <div class="flex items-center space-x-3 mb-8">
                             <span class="text-2xl">💎</span>
-                            <h3 class="text-2xl font-bold leading-tight text-white">Proposal & Recognition</h3>
+                            <h3 class="text-2xl font-bold leading-tight text-white uppercase">Proposal & Recognition</h3>
                         </div>
                         <div class="mb-10">
-                            <div class="box-karofi-accent p-6">
-                                <p class="text-[10px] font-black text-sky-400 uppercase tracking-[0.2em] mb-4">Primary Proposal</p>
-                                <h4 class="text-xl font-black text-white leading-snug">
-                                    Salary Raise <span class="text-sky-400">15% - 20%</span> <br>
-                                    <span class="text-xs text-slate-300 font-bold uppercase tracking-wide">based on NET salary</span>
+                            <div class="box-karofi-accent p-6 border-2 border-[#00AEEF] rounded-2xl bg-[#00AEEF]/5">
+                                <p class="text-[10px] font-black text-[#00AEEF] uppercase tracking-[0.2em] mb-4">Primary Proposal</p>
+                                <h4 class="text-xl font-black leading-snug text-white">
+                                    Salary Raise <span class="text-[#00AEEF]">15% - 20%</span> <br>
+                                    <span class="text-xs text-white font-bold uppercase tracking-wide opacity-80">based on NET salary</span>
                                 </h4>
-                                <div class="mt-4 pt-4 border-t border-white/10">
-                                    <p class="text-2xl font-black text-white leading-none">15.6M <span class="text-sky-400 text-base">→</span> 18M - 18.7M</p>
+                                <div class="mt-4 pt-4 border-t border-white/20">
+                                    <p class="text-2xl font-black text-white italic">15.6M <span class="text-[#00AEEF] text-base not-italic">→</span> 18M - 18.7M</p>
                                 </div>
-                                <p class="text-[14px] text-slate-400 mt-5 font-bold italic leading-tight text-white/90">*Excluding allowances and insurance</p>
+                                <p class="text-[14px] text-white mt-5 font-bold italic opacity-90">*Excluding allowances and insurance</p>
                             </div>
                         </div>
                         <div class="mt-auto">
-                            <div class="box-secondary-dark p-5 bg-white/5 border border-white/10 rounded-xl">
-                                <p class="text-[10px] font-black text-sky-300 uppercase tracking-[0.2em] mb-2">Secondary Goal</p>
-                                <p class="text-xs text-slate-400 font-bold uppercase mb-1">Career Progression</p>
-                                <p class="text-xl font-bold text-white">Senior Executive</p>
+                            <div class="p-5 bg-white/5 border border-white/10 rounded-xl">
+                                <p class="text-[10px] font-black text-[#00AEEF] uppercase tracking-[0.2em] mb-2 text-sky-400">Secondary Goal</p>
+                                <p class="text-xs text-white/70 font-bold uppercase mb-1">Career Progression</p>
+                                <p class="text-xl font-bold uppercase text-white">Senior Executive</p>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute -right-12 -bottom-12 text-[140px] opacity-10 select-none text-sky-500">📈</div>
+                    <div class="absolute -right-12 -bottom-12 text-[140px] opacity-10 select-none text-[#00AEEF]">📈</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Thank You Section -->
-    <section class="py-16 bg-white">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="text-2xl md:text-3xl font-medium text-slate-600 italic">
-                Thank you
-            </p>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="bg-white py-12 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400 text-xs font-bold uppercase tracking-widest">
-            Karofi Holdings • Oversea Marketing • Performance Review © 2026
+    <footer class="bg-white py-12 border-t border-slate-100 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-400 text-xs font-bold uppercase tracking-widest">
+            Karofi Holdings • Overseas Marketing • Performance Review © 2026
         </div>
     </footer>
 
@@ -542,7 +599,7 @@
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 const current = Math.floor(progress * (end - start) + start);
-                obj.innerHTML = current.toLocaleString();
+                obj.innerHTML = current.toLocaleString('en-US');
                 if (progress < 1) {
                     window.requestAnimationFrame(step);
                 }
@@ -551,18 +608,16 @@
         }
 
         window.onload = function() {
-            animateValue("stat-impressions", 0, 13700, 1500);
-            animateValue("stat-reactions", 0, 1200, 1500);
-            animateValue("stat-visitors", 0, 888, 1500);
-            animateValue("stat-followers", 0, 368, 1500);
-            animateValue("stat-web", 0, 70000, 1500);
-            animateValue("stat-media", 0, 500, 1500);
-            animateValue("stat-leads", 0, 188, 1500);
-            animateValue("stat-qual", 0, 30, 1500);
+            // Hiệu ứng số chạy cho Performance Snapshot
+            animateValue("stat-impressions", 0, 13700, 2000);
+            animateValue("stat-reactions", 0, 1200, 2000);
+            animateValue("stat-visitors", 0, 888, 2000);
+            animateValue("stat-followers", 0, 368, 2000);
+            animateValue("stat-web", 0, 70000, 2000);
+            animateValue("stat-media", 0, 500, 2000);
+            animateValue("stat-leads", 0, 188, 2000);
 
-            Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
-            Chart.defaults.color = '#94a3b8';
-
+            // Chart.js Configuration
             const ctx = document.getElementById('growthChart').getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
@@ -571,7 +626,7 @@
                     datasets: [{
                         label: 'Growth Rate (%)',
                         data: [212.6, 24.9, 536.1],
-                        backgroundColor: ['rgba(2, 132, 199, 0.8)', 'rgba(100, 116, 139, 0.8)', 'rgba(16, 185, 129, 0.8)'],
+                        backgroundColor: ['rgba(0, 174, 239, 0.8)', 'rgba(17, 71, 119, 0.8)', 'rgba(16, 185, 129, 0.8)'],
                         borderRadius: 12,
                         barThickness: 45
                     }]
